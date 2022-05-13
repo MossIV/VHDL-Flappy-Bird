@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP3C16F484) Path("C:/Users/OEM/Desktop/UNIVERSITY/305/Mini Project/MiniProject/output_files/") File("miniProject.sof") MfrSpec(OpMask(1));
+		Device PartName(EP3C16F484) Path("C:/Users/owene/Desktop/SOFTENG_2022_SEM1/COMPSYS 305/305Project/MiniProject/output_files/") File("miniProject.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 
