@@ -15,6 +15,7 @@ ENTITY char_rom IS
 		pb0 : IN STD_LOGIC;
 		training, game : IN STD_LOGIC;
 		clock				: 	IN STD_LOGIC ;
+		score_one, score_ten 	: IN STD_LOGIC_VECTOR(5 DOWNTO 0);
 		rom_mux_output		:	OUT STD_LOGIC
 	);
 END char_rom;
@@ -185,58 +186,115 @@ elsif(title_enable = '1' and start_Play = '1' and training = '1' and game = '0')
 elsif(title_enable = '0' and start_Play = '0') then
 	case mode is
 		when '0' =>
-			if (char_address_row = "000100" and char_address_col = "010000") then --T
+			if (char_address_row = "000011" and char_address_col = "010000") then --T
 				character_address <= "010100";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010001") then --R
+			elsif (char_address_row = "000011" and char_address_col = "010001") then --R
 				character_address <= "010010";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010010") then --A
+			elsif (char_address_row = "000011" and char_address_col = "010010") then --A
 				character_address <= "000001";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010011") then --I
+			elsif (char_address_row = "000011" and char_address_col = "010011") then --I
 				character_address <= "001001";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010100") then --N
+			elsif (char_address_row = "000011" and char_address_col = "010100") then --N
 				character_address <= "001110";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010101") then --I
+			elsif (char_address_row = "000011" and char_address_col = "010101") then --I
 				character_address <= "001001";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010110") then --N
+			elsif (char_address_row = "000011" and char_address_col = "010110") then --N
 				character_address <= "001110";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010111") then --G
+			elsif (char_address_row = "000011" and char_address_col = "010111") then --G
 				character_address <= "000111";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010001") then --S
+					character_address <= "010011";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010010") then --C
+					character_address <= "000011";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010011") then --O
+					character_address <= "001111";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010100") then --R
+					character_address <= "010010";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010101") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010111") then --0
+					character_address <= score_ten + CONV_STD_LOGIC_VECTOR(48,6);
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "011000") then --0
+					character_address <= score_one + CONV_STD_LOGIC_VECTOR(48,6);
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+					
 			else
 				rom_mux_output <= '0';
 			end if;
 		when '1' =>
-			if (char_address_row = "000100" and char_address_col = "010010") then --G
+			if (char_address_row = "000011" and char_address_col = "010010") then --G
 				character_address <= "000111";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010011") then --A
+			elsif (char_address_row = "000011" and char_address_col = "010011") then --A
 				character_address <= "000001";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010100") then --M
+			elsif (char_address_row = "000011" and char_address_col = "010100") then --M
 				character_address <= "001101";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
-			elsif (char_address_row = "000100" and char_address_col = "010101") then --E
+			elsif (char_address_row = "000011" and char_address_col = "010101") then --E
 				character_address <= "000101";
 				rom_address <= character_address & font_row;
 				rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010001") then --S
+					character_address <= "010011";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010010") then --C
+					character_address <= "000011";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010011") then --O
+					character_address <= "001111";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010100") then --R
+					character_address <= "010010";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010101") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "010111") then --0
+					character_address <= score_ten + CONV_STD_LOGIC_VECTOR(48,6);
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+			elsif (char_address_row = "000101" and char_address_col = "011000") then --0
+					character_address <= score_one + CONV_STD_LOGIC_VECTOR(48,6);
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
 			else
 				rom_mux_output <= '0';
 			end if;

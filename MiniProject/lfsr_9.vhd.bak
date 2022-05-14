@@ -1,0 +1,41 @@
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.all;
+USE  IEEE.STD_LOGIC_ARITH.all;
+USE  IEEE.STD_LOGIC_SIGNED.all;
+
+entity lfsr_9 is
+port (clk		: in std_logic;
+		pb0		: in std_logic;
+		out_lfsr	: out std_logic_vector(8 downto 0);
+		
+)
+end entity lfsr_9;
+
+architecture arc of lfsr_9 is
+
+signal seed		: std_logic_vector(8 downto 0) := "101010100";
+signal v_lfsr		: std_logic_vector(8 downto 0);
+
+begin
+out_lfsr <= v_lfsr;
+
+Num_Gen: process(clk)
+begin
+	if(rising_edge(clk)) then
+		if(pb0 = '0') then
+			v_lfsr <= seed;
+		else
+			v_lfsr(8) <= v_lfsr(7);
+			v_lfsr(7) <= v_lfsr(6);
+			v_lfsr(6) <= v_lfsr(5);
+			v_lfsr(5) <= v_lfsr(4);
+			v_lfsr(4) <= v_lfsr(3) xor v_lfsr(8) ;
+			v_lfsr(3) <= v_lfsr(2);
+			v_lfsr(2) <= v_lfsr(1);
+			v_lfsr(1) <= v_lfsr(0);
+			v_lfsr(0) <= v_lfsr(8);
+		end if;
+	end if;
+end process Num_Gen;
+
+end architecture arc;

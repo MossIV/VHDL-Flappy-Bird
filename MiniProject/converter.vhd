@@ -1,0 +1,33 @@
+library IEEE;
+use IEEE.numeric_std.all;
+use IEEE.STD_LOGIC_1164.all;
+use IEEE.numeric_bit.all;
+
+entity converter is
+  port(clk : in bit; clkslow: out bit);
+  end entity converter;
+  
+architecture conv of converter is
+signal count: integer := 0;
+signal vclkslow: bit:= '0';
+begin
+
+clkslow <= vclkslow;
+
+process (clk)
+  begin
+    if(rising_edge(clk)) then
+      if (count <= 12499999) then
+        count <= count + 1;
+        vclkslow <= '0';
+      elsif (count <= 24999999) then
+        count <= count + 1;
+        vclkslow <= '1';
+      else
+        count <= 0;
+        vclkslow <= '0';
+    end if;
+  end if;
+end process;
+end architecture;
+    
