@@ -4,16 +4,16 @@ USE  IEEE.STD_LOGIC_ARITH.all;
 USE  IEEE.STD_LOGIC_SIGNED.all;
 
 
-ENTITY bouncy_ball IS
+ENTITY objects IS
 	PORT
 		(clk, vert_sync, hori_sync, pb0, training, game	: IN std_logic;
           pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
 			 lfsr_value						: IN std_logic_vector(8 downto 0);
 		    blue, green, red 			: OUT std_logic;
 			 score_ones, score_tens		: OUT std_logic_vector(5 DOWNTO 0));		
-END bouncy_ball;
+END objects;
 
-architecture behavior of bouncy_ball is
+architecture behavior of objects is
 
 SIGNAL ball_on					: std_logic;
 SIGNAL size 					: std_logic_vector(9 DOWNTO 0);  

@@ -631,8 +631,8 @@ applicable agreement for further details.
 )
 (symbol
 	(rect 616 480 856 688)
-	(text "bouncy_ball" (rect 5 0 64 12)(font "Arial" ))
-	(text "inst14" (rect 8 192 37 204)(font "Arial" ))
+	(text "objects" (rect 5 0 40 12)(font "Arial" ))
+	(text "inst1" (rect 8 192 31 204)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)

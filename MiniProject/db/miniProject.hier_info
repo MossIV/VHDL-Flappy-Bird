@@ -2,14 +2,14 @@
 red_out <= VGA_SYNC:inst.red_out
 clk => altpll0:inst2.inclk0
 pb0 => char_rom:inst12.pb0
-pb0 => bouncy_ball:inst14.pb0
+pb0 => objects:inst1.pb0
 pb0 => lfsr_9:inst13.pb0
 pb0 => upCounter:inst9.Start
 training => char_rom:inst12.training
-training => bouncy_ball:inst14.training
+training => objects:inst1.training
 training => upCounter:inst9.training
 game => char_rom:inst12.game
-game => bouncy_ball:inst14.game
+game => objects:inst1.game
 game => upCounter:inst9.game
 green_out <= VGA_SYNC:inst.green_out
 blue_out <= VGA_SYNC:inst.blue_out
@@ -678,7 +678,7 @@ q_a[6] <= ram_block1a6.PORTADATAOUT
 q_a[7] <= ram_block1a7.PORTADATAOUT
 
 
-|miniProject|bouncy_ball:inst14
+|miniProject|objects:inst1
 clk => ~NO_FANOUT~
 vert_sync => pipe_x_motion[0].CLK
 vert_sync => pipe_x_motion[1].CLK
