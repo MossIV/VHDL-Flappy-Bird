@@ -20,9 +20,9 @@ applicable agreement for further details.
 */
 (header "symbol" (version "1.1"))
 (symbol
-	(rect 16 16 256 224)
+	(rect 16 16 256 256)
 	(text "objects" (rect 5 0 32 12)(font "Arial" ))
-	(text "inst" (rect 8 192 20 204)(font "Arial" ))
+	(text "inst" (rect 8 224 20 236)(font "Arial" ))
 	(port
 		(pt 0 32)
 		(input)
@@ -68,30 +68,37 @@ applicable agreement for further details.
 	(port
 		(pt 0 128)
 		(input)
-		(text "left_mouse" (rect 0 0 44 12)(font "Arial" ))
-		(text "left_mouse" (rect 21 123 65 135)(font "Arial" ))
+		(text "lClick" (rect 0 0 20 12)(font "Arial" ))
+		(text "lClick" (rect 21 123 41 135)(font "Arial" ))
 		(line (pt 0 128)(pt 16 128)(line_width 1))
 	)
 	(port
 		(pt 0 144)
 		(input)
-		(text "pixel_row[9..0]" (rect 0 0 56 12)(font "Arial" ))
-		(text "pixel_row[9..0]" (rect 21 139 77 151)(font "Arial" ))
-		(line (pt 0 144)(pt 16 144)(line_width 3))
+		(text "rClick" (rect 0 0 22 12)(font "Arial" ))
+		(text "rClick" (rect 21 139 43 151)(font "Arial" ))
+		(line (pt 0 144)(pt 16 144)(line_width 1))
 	)
 	(port
 		(pt 0 160)
 		(input)
-		(text "pixel_column[9..0]" (rect 0 0 70 12)(font "Arial" ))
-		(text "pixel_column[9..0]" (rect 21 155 91 167)(font "Arial" ))
+		(text "pixel_row[9..0]" (rect 0 0 56 12)(font "Arial" ))
+		(text "pixel_row[9..0]" (rect 21 155 77 167)(font "Arial" ))
 		(line (pt 0 160)(pt 16 160)(line_width 3))
 	)
 	(port
 		(pt 0 176)
 		(input)
-		(text "lfsr_value[8..0]" (rect 0 0 60 12)(font "Arial" ))
-		(text "lfsr_value[8..0]" (rect 21 171 81 183)(font "Arial" ))
+		(text "pixel_column[9..0]" (rect 0 0 70 12)(font "Arial" ))
+		(text "pixel_column[9..0]" (rect 21 171 91 183)(font "Arial" ))
 		(line (pt 0 176)(pt 16 176)(line_width 3))
+	)
+	(port
+		(pt 0 192)
+		(input)
+		(text "lfsr_value[8..0]" (rect 0 0 60 12)(font "Arial" ))
+		(text "lfsr_value[8..0]" (rect 21 187 81 199)(font "Arial" ))
+		(line (pt 0 192)(pt 16 192)(line_width 3))
 	)
 	(port
 		(pt 240 32)
@@ -129,6 +136,6 @@ applicable agreement for further details.
 		(line (pt 240 96)(pt 224 96)(line_width 3))
 	)
 	(drawing
-		(rectangle (rect 16 16 224 192)(line_width 1))
+		(rectangle (rect 16 16 224 224)(line_width 1))
 	)
 )

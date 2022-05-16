@@ -6,7 +6,7 @@ USE  IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY objects IS
 	PORT
-		(clk, vert_sync, hori_sync, pb0, training, game, left_mouse	: IN std_logic;
+		(clk, vert_sync, hori_sync, pb0, training, game, lClick, rClick	: IN std_logic;
           pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
 			 lfsr_value						: IN std_logic_vector(8 downto 0);
 		    blue, green, red 			: OUT std_logic;
@@ -16,6 +16,7 @@ END objects;
 architecture behavior of objects is
 
 SIGNAL ball_on					: std_logic;
+SIGNAL going_up 				: std_logic_vector(9 DOWNTO 0);
 SIGNAL size 					: std_logic_vector(9 DOWNTO 0);  
 SIGNAL ball_y_pos				: std_logic_vector(9 DOWNTO 0);
 SiGNAL ball_x_pos				: std_logic_vector(10 DOWNTO 0);
@@ -84,8 +85,10 @@ begin
 			ball_y_motion <= - CONV_STD_LOGIC_VECTOR(1,10);
 		elsif (ball_y_pos <= size) then 
 			ball_y_motion <= CONV_STD_LOGIC_VECTOR(2,10);
-		elsif(left_mouse = '1') then
+		elsif(lClick = '1') then
 			ball_y_motion <= CONV_STD_LOGIC_VECTOR(10,10);
+		elsif(rClick = '1') then
+			ball_y_motion <= -CONV_STD_LOGIC_VECTOR(10,10);
 		end if;
 		-- Compute next ball Y position
 		ball_y_pos <= ball_y_pos + ball_y_motion;
