@@ -13,7 +13,7 @@ end entity lfsr_9;
 
 architecture arc of lfsr_9 is
 
-signal seed		: std_logic_vector(8 downto 0) := "000101000";
+signal seed		: std_logic_vector(8 downto 0) := "010101010";
 signal v_lfsr		: std_logic_vector(8 downto 0);
 signal vClock: bit := '0';
 signal Clock: bit := '0';
