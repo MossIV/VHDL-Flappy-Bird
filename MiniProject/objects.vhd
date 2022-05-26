@@ -43,6 +43,7 @@ SIGNAL pipe_y_pos				: std_logic_vector(9 DOWNTO 0);
 SIGNAL pipe_x_pos				: std_logic_vector(10 DOWNTO 0) := CONV_STD_LOGIC_VECTOR(619,11);
 SIGNAL pipe_x_motion			: std_logic_vector(9 downto 0);
 SIGNAL isHit					: std_logic := '0';
+SIGNAL level					: std_logic_vector(1 downto 0);
 
 SIGNAL coin_on					: std_logic;
 SIGNAL isCoin					: std_logic;
@@ -104,19 +105,19 @@ variable v_red	:std_logic;
 begin
 	if(start_c ='1' AND alive ='1' AND isCoin = '1' AND gotCoin = '0') then 
 		if(lives = "001") then
-			v_blue := ball_on or life_one_on or coin_on;
+			v_blue := ball_on or life_one_on;
 			v_green := pipe_on or coin_on;
 			v_red := ball_on or life_one_on or coin_on;
 		elsif(lives="010") then
-			v_blue := ball_on or life_one_on or life_two_on or coin_on;
+			v_blue := ball_on or life_one_on or life_two_on;
 			v_green := pipe_on or coin_on;
-			v_red := ball_on or life_one_on or life_two_on or coin_on;
+			v_red := ball_on or life_one_on or life_two_on  or coin_on ;
 		elsif(lives = "011") then
-			v_blue := ball_on or life_one_on or life_two_on or life_three_on or coin_on;
+			v_blue := ball_on or life_one_on or life_two_on or life_three_on;
 			v_green := pipe_on or coin_on;
 			v_red := ball_on or life_one_on or life_two_on or life_three_on or coin_on;
 		else
-			v_blue := ball_on or coin_on;
+			v_blue := ball_on;
 			v_green := pipe_on or coin_on;
 			v_red := ball_on or coin_on;
 		end if;
@@ -224,38 +225,51 @@ begin
 	if (rising_edge(vert_sync)) then
 		if(pb0 = '0' and start = '0') then
 			start := '1';
+			level <= "01";
 			pipe_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
-			if ('0' & lfsr_value <= "0100011000") then 
+			if ('0' & lfsr_value <= "0100101100") then 
 				v_lfsr_state := '0';
 			else
 				v_lfsr_state := '1';
 			end if;
 			case(v_lfsr_state) is
 			when '0' => lfsr_gap <= ('0' & lfsr_value); 
-			when '1' => lfsr_gap <= ('0' & lfsr_value - "0100011000");
+			when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
 			when others =>lfsr_gap <= "0000000000";
 			end case;
-			lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(99,10);
-			lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(50,10);
+			lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(100,10);
+			lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(75,10);
 		else
+			if(level = "11") then
+				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(3,10);
+				coin_x_motion <= -CONV_STD_LOGIC_VECTOR(3,10);
+			else
+				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
+				coin_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
+			end if;
+			
 			if(pipe_x_pos <= CONV_STD_LOGIC_VECTOR(0,11)) then
 				pipe_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
 				gotCoin <= '0';
 				isHit <= '0';
 				added := '0';
 				addedCoin := '0';
-				if ('0' & lfsr_value <= "0100011000") then 
+				if ('0' & lfsr_value <= "0100101100") then 
 					v_lfsr_state := '0';
 				else
 					v_lfsr_state := '1';
 				end if;
-				case(v_lfsr_state) is
+			case(v_lfsr_state) is
 				when '0' => lfsr_gap <= ('0' & lfsr_value); 
-				when '1' => lfsr_gap <= ('0' & lfsr_value - "0100011000");
+				when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
 				when others =>lfsr_gap <= "0000000000";
 				end case;
-				lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(99,10);
-				lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(90,10);
+				lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(100,10);
+					if(level = "01") then
+						lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(75,10);
+					else
+						lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(50,10);
+					end if;
 				if('0' & lfsr_coin >= "010101010") then 
 					isCoin <= '1';
 					coin_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
@@ -264,8 +278,6 @@ begin
 					isCoin <= '0';
 				end if;
 			elsif((('0' & ball_x_pos + size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos + size <= '0' & pipe_x_pos + pipe_size) or ('0' & ball_x_pos - size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos - size <= '0' & pipe_x_pos + pipe_size))AND isHit = '0') then
-				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
-				coin_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
 				coin_x_pos <= coin_x_pos + coin_x_motion;
 				if(('0' & ball_y_pos - size < '0' & lfsr_gap_centre - lfsr_gap_size) or ('0' & ball_y_pos + size > '0' & lfsr_gap_centre + lfsr_gap_size)) then
 					isHit <= '1';
@@ -283,7 +295,6 @@ begin
 				end if;
 				score_ones <= vscore_one;
 				score_tens <= vscore_ten;
-				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
 				pipe_x_pos <= pipe_x_pos + pipe_x_motion;
 			elsif(ball_x_pos >= pipe_x_pos AND isHit ='0' AND added = '0' AND alive = '1') then
 				if(vscore_one = CONV_STD_LOGIC_VECTOR(9,6)) then
@@ -295,14 +306,18 @@ begin
 				added := '1';
 				score_ones <= vscore_one;
 				score_tens <= vscore_ten;
-				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
 		-- Compute next pipe x position
 				pipe_x_pos <= pipe_x_pos + pipe_x_motion;
+				if(game = '0') then
+					if(vscore_ten >= "000010" and vscore_ten < "000100") then 
+						level <= "10";
+					end if;
+					if(vscore_ten >= "000100") then
+						level <= "11";
+					end if;
+				end if;	
 			else
-				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
-		-- Compute next pipe x position
-				pipe_x_pos <= pipe_x_pos + pipe_x_motion;
-			coin_x_motion <= -CONV_STD_LOGIC_VECTOR(2,10);
+			pipe_x_pos <= pipe_x_pos + pipe_x_motion;
 			coin_x_pos <= coin_x_pos + coin_x_motion;
 			end if;
 			end if;

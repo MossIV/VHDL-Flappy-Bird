@@ -28,6 +28,8 @@ ARCHITECTURE SYN OF char_rom IS
 	SIGNAL character_address : STD_LOGIC_VECTOR(5 DOWNTO 0);
 	SIGNAL title_enable : STD_LOGIC;
 	SIGNAL mode :STD_LOGIC;
+	SIGNAL countDisplayLevelTwo :integer := 0;
+	SIGNAL countDisplayLevelThree :integer := 0;
 	
 	COMPONENT altsyncram
 	GENERIC (
@@ -297,6 +299,65 @@ elsif(title_enable = '0' and start_Play = '0' and alive_status = '1') then
 			else
 				rom_mux_output <= '0';
 			end if;
+			
+			if(score_ten = "000010" and score_one >= "000000" and countDisplayLevelTwo < 49999999) then
+				countDisplayLevelTwo<= countDisplayLevelTwo + 1;
+				if (char_address_row = "001101" and char_address_col = "010001") then --L
+					character_address <= "001100";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010010") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010011") then --V
+					character_address <= "010110";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010100") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010101") then --L
+						character_address <= "001100";
+						rom_address <= character_address & font_row;
+						rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010111") then --2
+						character_address <= "110010";
+						rom_address <= character_address & font_row;
+						rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				end if;
+			end if;
+						
+				if(score_ten = "000100" and score_one >= "000000" and countDisplayLevelThree < 49999999) then
+				countDisplayLevelThree<= countDisplayLevelThree + 1;
+				if (char_address_row = "001101" and char_address_col = "010001") then --L
+					character_address <= "001100";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010010") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010011") then --V
+					character_address <= "010110";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010100") then --E
+					character_address <= "000101";
+					rom_address <= character_address & font_row;
+					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010101") then --L
+						character_address <= "001100";
+						rom_address <= character_address & font_row;
+						rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				elsif (char_address_row = "001101" and char_address_col = "010111") then --3
+						character_address <= "110011";
+						rom_address <= character_address & font_row;
+						rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
+				end if;
+			end if;
+			
 	end case;
 elsif(alive_status = '0') then 
 			if (char_address_row = "001011" and char_address_col = "010001") then --S
