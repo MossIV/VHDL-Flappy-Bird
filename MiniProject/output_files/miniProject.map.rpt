@@ -1,5 +1,5 @@
 Analysis & Synthesis report for miniProject
-Sat May 21 17:28:42 2022
+Thu May 26 20:26:21 2022
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -18,18 +18,19 @@ Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edit
  10. State Machine - |miniProject|MOUSE:inst6|mouse_state
  11. User-Specified and Inferred Latches
  12. Registers Removed During Synthesis
- 13. General Register Statistics
- 14. Inverted Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
- 17. Parameter Settings for User Entity Instance: altpll0:inst2|altpll:altpll_component
- 18. Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component
- 19. altpll Parameter Settings by Entity Instance
- 20. altsyncram Parameter Settings by Entity Instance
- 21. Port Connectivity Checks: "upCounter:inst9|BCD_Counter:one"
- 22. Port Connectivity Checks: "upCounter:inst9|BCD_Counter:min"
- 23. Elapsed Time Per Partition
- 24. Analysis & Synthesis Messages
+ 13. Removed Registers Triggering Further Register Optimizations
+ 14. General Register Statistics
+ 15. Inverted Register Statistics
+ 16. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 17. Source assignments for char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated
+ 18. Parameter Settings for User Entity Instance: altpll0:inst2|altpll:altpll_component
+ 19. Parameter Settings for User Entity Instance: char_rom:inst5|altsyncram:altsyncram_component
+ 20. altpll Parameter Settings by Entity Instance
+ 21. altsyncram Parameter Settings by Entity Instance
+ 22. Port Connectivity Checks: "upCounter:inst9|BCD_Counter:one"
+ 23. Port Connectivity Checks: "upCounter:inst9|BCD_Counter:min"
+ 24. Elapsed Time Per Partition
+ 25. Analysis & Synthesis Messages
 
 
 
@@ -55,15 +56,15 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Sat May 21 17:28:41 2022           ;
+; Analysis & Synthesis Status        ; Successful - Thu May 26 20:26:21 2022           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; miniProject                                     ;
 ; Top-level Entity Name              ; miniProject                                     ;
 ; Family                             ; Cyclone III                                     ;
-; Total logic elements               ; 787                                             ;
-;     Total combinational functions  ; 705                                             ;
-;     Dedicated logic registers      ; 306                                             ;
-; Total registers                    ; 306                                             ;
+; Total logic elements               ; 1,048                                           ;
+;     Total combinational functions  ; 956                                             ;
+;     Dedicated logic registers      ; 342                                             ;
+; Total registers                    ; 342                                             ;
 ; Total pins                         ; 55                                              ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 4,096                                           ;
@@ -187,6 +188,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; miniProject.bdf                  ; yes             ; User Block Diagram/Schematic File      ; C:/Users/owene/Desktop/SOFTENG_2022_SEM1/COMPSYS 305/305Project/MiniProject/miniProject.bdf        ;         ;
 ; colour_selector.vhd              ; yes             ; User VHDL File                         ; C:/Users/owene/Desktop/SOFTENG_2022_SEM1/COMPSYS 305/305Project/MiniProject/colour_selector.vhd    ;         ;
 ; lfsr_9.vhd                       ; yes             ; User VHDL File                         ; C:/Users/owene/Desktop/SOFTENG_2022_SEM1/COMPSYS 305/305Project/MiniProject/lfsr_9.vhd             ;         ;
+; lfsr_8.vhd                       ; yes             ; User VHDL File                         ; C:/Users/owene/Desktop/SOFTENG_2022_SEM1/COMPSYS 305/305Project/MiniProject/lfsr_8.vhd             ;         ;
 ; altpll.tdf                       ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/altpll.tdf                                       ;         ;
 ; aglobal130.inc                   ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/aglobal130.inc                                   ;         ;
 ; stratix_pll.inc                  ; yes             ; Megafunction                           ; c:/altera/13.0sp1/quartus/libraries/megafunctions/stratix_pll.inc                                  ;         ;
@@ -211,20 +213,20 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+--------------------------------------------------------------------------------------+
 ; Resource                                    ; Usage                                                                                ;
 +---------------------------------------------+--------------------------------------------------------------------------------------+
-; Estimated Total logic elements              ; 787                                                                                  ;
+; Estimated Total logic elements              ; 1,048                                                                                ;
 ;                                             ;                                                                                      ;
-; Total combinational functions               ; 705                                                                                  ;
+; Total combinational functions               ; 956                                                                                  ;
 ; Logic element usage by number of LUT inputs ;                                                                                      ;
-;     -- 4 input functions                    ; 297                                                                                  ;
-;     -- 3 input functions                    ; 168                                                                                  ;
-;     -- <=2 input functions                  ; 240                                                                                  ;
+;     -- 4 input functions                    ; 346                                                                                  ;
+;     -- 3 input functions                    ; 265                                                                                  ;
+;     -- <=2 input functions                  ; 345                                                                                  ;
 ;                                             ;                                                                                      ;
 ; Logic elements by mode                      ;                                                                                      ;
-;     -- normal mode                          ; 484                                                                                  ;
-;     -- arithmetic mode                      ; 221                                                                                  ;
+;     -- normal mode                          ; 581                                                                                  ;
+;     -- arithmetic mode                      ; 375                                                                                  ;
 ;                                             ;                                                                                      ;
-; Total registers                             ; 306                                                                                  ;
-;     -- Dedicated logic registers            ; 306                                                                                  ;
+; Total registers                             ; 342                                                                                  ;
+;     -- Dedicated logic registers            ; 342                                                                                  ;
 ;     -- I/O registers                        ; 0                                                                                    ;
 ;                                             ;                                                                                      ;
 ; I/O pins                                    ; 55                                                                                   ;
@@ -234,9 +236,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- PLLs                                 ; 1                                                                                    ;
 ;                                             ;                                                                                      ;
 ; Maximum fan-out node                        ; altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated|wire_pll1_clk[0] ;
-; Maximum fan-out                             ; 137                                                                                  ;
-; Total fan-out                               ; 3237                                                                                 ;
-; Average fan-out                             ; 2.86                                                                                 ;
+; Maximum fan-out                             ; 138                                                                                  ;
+; Total fan-out                               ; 4034                                                                                 ;
+; Average fan-out                             ; 2.84                                                                                 ;
 +---------------------------------------------+--------------------------------------------------------------------------------------+
 
 
@@ -245,26 +247,29 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------+--------------+
 ; Compilation Hierarchy Node                ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                        ; Library Name ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------+--------------+
-; |miniProject                              ; 705 (1)           ; 306 (0)      ; 4096        ; 0            ; 0       ; 0         ; 55   ; 0            ; |miniProject                                                                               ; work         ;
+; |miniProject                              ; 956 (1)           ; 342 (0)      ; 4096        ; 0            ; 0       ; 0         ; 55   ; 0            ; |miniProject                                                                               ; work         ;
+;    |COLOUR_SELECTOR:inst4|                ; 2 (2)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|COLOUR_SELECTOR:inst4                                                         ; work         ;
 ;    |MOUSE:inst6|                          ; 111 (111)         ; 120 (120)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|MOUSE:inst6                                                                   ; work         ;
-;    |VGA_SYNC:inst|                        ; 77 (77)           ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|VGA_SYNC:inst                                                                 ; work         ;
+;    |VGA_SYNC:inst|                        ; 62 (62)           ; 48 (48)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|VGA_SYNC:inst                                                                 ; work         ;
 ;    |altpll0:inst2|                        ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|altpll0:inst2                                                                 ; work         ;
 ;       |altpll:altpll_component|           ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|altpll0:inst2|altpll:altpll_component                                         ; work         ;
 ;          |altpll0_altpll:auto_generated|  ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|altpll0:inst2|altpll:altpll_component|altpll0_altpll:auto_generated           ; work         ;
-;    |char_rom:inst5|                       ; 172 (172)         ; 18 (18)      ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|char_rom:inst5                                                                ; work         ;
+;    |char_rom:inst5|                       ; 165 (165)         ; 18 (18)      ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|char_rom:inst5                                                                ; work         ;
 ;       |altsyncram:altsyncram_component|   ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|char_rom:inst5|altsyncram:altsyncram_component                                ; work         ;
 ;          |altsyncram_kt91:auto_generated| ; 0 (0)             ; 0 (0)        ; 4096        ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated ; work         ;
-;    |lfsr_9:inst13|                        ; 45 (9)            ; 42 (9)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_9:inst13                                                                 ; work         ;
-;       |converter:convert|                 ; 36 (36)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_9:inst13|converter:convert                                               ; work         ;
-;    |objects:inst1|                        ; 224 (224)         ; 64 (64)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|objects:inst1                                                                 ; work         ;
-;    |upCounter:inst9|                      ; 75 (5)            ; 14 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9                                                               ; work         ;
+;    |lfsr_8:inst11|                        ; 41 (8)            ; 41 (8)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_8:inst11                                                                 ; work         ;
+;       |converter:convert|                 ; 33 (33)           ; 33 (33)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_8:inst11|converter:convert                                               ; work         ;
+;    |lfsr_9:inst13|                        ; 9 (9)             ; 10 (9)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_9:inst13                                                                 ; work         ;
+;       |converter:convert|                 ; 0 (0)             ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|lfsr_9:inst13|converter:convert                                               ; work         ;
+;    |objects:inst10|                       ; 488 (488)         ; 91 (91)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|objects:inst10                                                                ; work         ;
+;    |upCounter:inst9|                      ; 77 (5)            ; 14 (1)       ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9                                                               ; work         ;
 ;       |BCD_Counter:min|                   ; 4 (4)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|BCD_Counter:min                                               ; work         ;
 ;       |BCD_Counter:one|                   ; 5 (5)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|BCD_Counter:one                                               ; work         ;
 ;       |BCD_Counter:ten|                   ; 7 (7)             ; 4 (4)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|BCD_Counter:ten                                               ; work         ;
 ;       |bcd_Display:minDisp|               ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|bcd_Display:minDisp                                           ; work         ;
 ;       |bcd_Display:oneDisp|               ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|bcd_Display:oneDisp                                           ; work         ;
 ;       |bcd_Display:tenDisp|               ; 14 (14)           ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|bcd_Display:tenDisp                                           ; work         ;
-;       |converter:convert|                 ; 12 (12)           ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|converter:convert                                             ; work         ;
+;       |converter:convert|                 ; 14 (14)           ; 1 (1)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |miniProject|upCounter:inst9|converter:convert                                             ; work         ;
 +-------------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+--------------------------------------------------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
 
@@ -325,18 +330,17 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; MOUSE:inst6|CHAROUT[2]                      ; Stuck at VCC due to stuck port data_in                ;
 ; MOUSE:inst6|CHAROUT[0,1]                    ; Stuck at GND due to stuck port data_in                ;
 ; MOUSE:inst6|SHIFTOUT[10]                    ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|pipe_x_motion[2..6]           ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|life_three_centre[0]          ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|pipe_x_motion[1]              ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|pipe_x_motion[0]              ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|pipe_x_motion[7..9]           ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|ball_y_motion[1]              ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|life_three_centre[1..3]       ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|life_three_centre[4,5]        ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|life_three_centre[6..9]       ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|life_two_centre[0..4]         ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|life_two_centre[5]            ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|life_two_centre[6..9]         ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_three_centre[0]         ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|pipe_x_motion[0]             ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|pipe_x_motion[1..9]          ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|coin_y_pos[10]               ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_three_centre[1..3]      ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_three_centre[4,5]       ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|life_three_centre[6..9]      ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_two_centre[0..4]        ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_two_centre[5]           ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|life_two_centre[6..9]        ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|ball_y_motion[1]             ; Stuck at VCC due to stuck port data_in                ;
 ; upCounter:inst9|BCD_Counter:one|v_Q[1]      ; Merged with upCounter:inst9|BCD_Counter:one|Q[1]      ;
 ; upCounter:inst9|BCD_Counter:one|v_Q[0]      ; Merged with upCounter:inst9|BCD_Counter:one|Q[0]      ;
 ; upCounter:inst9|BCD_Counter:one|v_Q[2]      ; Merged with upCounter:inst9|BCD_Counter:one|Q[2]      ;
@@ -350,74 +354,120 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; upCounter:inst9|BCD_Counter:min|v_Q[2]      ; Merged with upCounter:inst9|BCD_Counter:min|Q[2]      ;
 ; upCounter:inst9|BCD_Counter:min|v_Q[3]      ; Merged with upCounter:inst9|BCD_Counter:min|Q[3]      ;
 ; upCounter:inst9|v1Enable                    ; Merged with upCounter:inst9|LEDoff                    ;
-; upCounter:inst9|converter:convert|count[0]  ; Merged with lfsr_9:inst13|converter:convert|count[0]  ;
-; upCounter:inst9|converter:convert|count[1]  ; Merged with lfsr_9:inst13|converter:convert|count[1]  ;
-; upCounter:inst9|converter:convert|count[2]  ; Merged with lfsr_9:inst13|converter:convert|count[2]  ;
-; upCounter:inst9|converter:convert|count[3]  ; Merged with lfsr_9:inst13|converter:convert|count[3]  ;
-; upCounter:inst9|converter:convert|count[4]  ; Merged with lfsr_9:inst13|converter:convert|count[4]  ;
-; upCounter:inst9|converter:convert|count[5]  ; Merged with lfsr_9:inst13|converter:convert|count[5]  ;
-; upCounter:inst9|converter:convert|count[6]  ; Merged with lfsr_9:inst13|converter:convert|count[6]  ;
-; upCounter:inst9|converter:convert|count[7]  ; Merged with lfsr_9:inst13|converter:convert|count[7]  ;
-; upCounter:inst9|converter:convert|count[8]  ; Merged with lfsr_9:inst13|converter:convert|count[8]  ;
-; upCounter:inst9|converter:convert|count[9]  ; Merged with lfsr_9:inst13|converter:convert|count[9]  ;
-; upCounter:inst9|converter:convert|count[10] ; Merged with lfsr_9:inst13|converter:convert|count[10] ;
-; upCounter:inst9|converter:convert|count[11] ; Merged with lfsr_9:inst13|converter:convert|count[11] ;
-; upCounter:inst9|converter:convert|count[12] ; Merged with lfsr_9:inst13|converter:convert|count[12] ;
-; upCounter:inst9|converter:convert|count[13] ; Merged with lfsr_9:inst13|converter:convert|count[13] ;
-; upCounter:inst9|converter:convert|count[14] ; Merged with lfsr_9:inst13|converter:convert|count[14] ;
-; upCounter:inst9|converter:convert|count[15] ; Merged with lfsr_9:inst13|converter:convert|count[15] ;
-; upCounter:inst9|converter:convert|count[16] ; Merged with lfsr_9:inst13|converter:convert|count[16] ;
-; upCounter:inst9|converter:convert|count[17] ; Merged with lfsr_9:inst13|converter:convert|count[17] ;
-; upCounter:inst9|converter:convert|count[18] ; Merged with lfsr_9:inst13|converter:convert|count[18] ;
-; upCounter:inst9|converter:convert|count[19] ; Merged with lfsr_9:inst13|converter:convert|count[19] ;
-; upCounter:inst9|converter:convert|count[20] ; Merged with lfsr_9:inst13|converter:convert|count[20] ;
-; upCounter:inst9|converter:convert|count[21] ; Merged with lfsr_9:inst13|converter:convert|count[21] ;
-; upCounter:inst9|converter:convert|count[22] ; Merged with lfsr_9:inst13|converter:convert|count[22] ;
-; upCounter:inst9|converter:convert|count[23] ; Merged with lfsr_9:inst13|converter:convert|count[23] ;
-; upCounter:inst9|converter:convert|count[24] ; Merged with lfsr_9:inst13|converter:convert|count[24] ;
-; upCounter:inst9|converter:convert|count[25] ; Merged with lfsr_9:inst13|converter:convert|count[25] ;
-; upCounter:inst9|converter:convert|count[26] ; Merged with lfsr_9:inst13|converter:convert|count[26] ;
-; upCounter:inst9|converter:convert|count[27] ; Merged with lfsr_9:inst13|converter:convert|count[27] ;
-; upCounter:inst9|converter:convert|count[28] ; Merged with lfsr_9:inst13|converter:convert|count[28] ;
-; upCounter:inst9|converter:convert|count[29] ; Merged with lfsr_9:inst13|converter:convert|count[29] ;
-; upCounter:inst9|converter:convert|count[30] ; Merged with lfsr_9:inst13|converter:convert|count[30] ;
-; upCounter:inst9|converter:convert|count[31] ; Merged with lfsr_9:inst13|converter:convert|count[31] ;
-; objects:inst1|score_tens[0]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[0]    ;
-; objects:inst1|score_tens[1]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[1]    ;
-; objects:inst1|score_tens[2]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[2]    ;
-; objects:inst1|score_tens[3]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[3]    ;
-; objects:inst1|score_tens[4]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[4]    ;
-; objects:inst1|score_tens[5]                 ; Merged with objects:inst1|\Move_Pipe:vscore_ten[5]    ;
-; objects:inst1|score_ones[0]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[0]    ;
-; objects:inst1|score_ones[1]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[1]    ;
-; objects:inst1|score_ones[2]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[2]    ;
-; objects:inst1|score_ones[3]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[3]    ;
-; objects:inst1|score_ones[4]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[4]    ;
-; objects:inst1|score_ones[5]                 ; Merged with objects:inst1|\Move_Pipe:vscore_one[5]    ;
-; objects:inst1|lfsr_gap_size[2,3,6..9]       ; Merged with objects:inst1|lfsr_gap_size[0]            ;
-; objects:inst1|lfsr_gap_size[4,5]            ; Merged with objects:inst1|lfsr_gap_size[1]            ;
-; objects:inst1|ball_y_motion[4..9]           ; Merged with objects:inst1|ball_y_motion[2]            ;
-; objects:inst1|life_one_centre[1..3,5..9]    ; Merged with objects:inst1|life_one_centre[0]          ;
-; objects:inst1|lives[2]                      ; Merged with objects:inst1|life_one_centre[0]          ;
-; objects:inst1|lives_size[0,1,3..9]          ; Merged with objects:inst1|life_one_centre[0]          ;
-; objects:inst1|lives[0]                      ; Merged with objects:inst1|life_one_centre[4]          ;
-; objects:inst1|lives_size[2]                 ; Merged with objects:inst1|life_one_centre[4]          ;
-; objects:inst1|ball_x_pos[1,3]               ; Merged with objects:inst1|ball_x_pos[0]               ;
-; objects:inst1|size[0..2,4..9]               ; Merged with objects:inst1|ball_x_pos[0]               ;
-; objects:inst1|ball_x_pos[4,7..9]            ; Merged with objects:inst1|ball_x_pos[10]              ;
-; objects:inst1|ball_x_pos[6]                 ; Merged with objects:inst1|ball_x_pos[5]               ;
-; objects:inst1|size[3]                       ; Merged with objects:inst1|ball_x_pos[5]               ;
-; objects:inst1|lfsr_gap_size[0]              ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|life_one_centre[0]            ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|ball_x_pos[0]                 ; Stuck at GND due to stuck port data_in                ;
-; objects:inst1|life_one_centre[4]            ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|ball_x_pos[5]                 ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|lfsr_gap_size[1]              ; Stuck at VCC due to stuck port data_in                ;
-; objects:inst1|pipe_x_pos[0]                 ; Stuck at VCC due to stuck port data_in                ;
+; lfsr_9:inst13|converter:convert|count[0]    ; Merged with lfsr_8:inst11|converter:convert|count[0]  ;
+; upCounter:inst9|converter:convert|count[0]  ; Merged with lfsr_8:inst11|converter:convert|count[0]  ;
+; lfsr_9:inst13|converter:convert|count[1]    ; Merged with lfsr_8:inst11|converter:convert|count[1]  ;
+; upCounter:inst9|converter:convert|count[1]  ; Merged with lfsr_8:inst11|converter:convert|count[1]  ;
+; lfsr_9:inst13|converter:convert|count[2]    ; Merged with lfsr_8:inst11|converter:convert|count[2]  ;
+; upCounter:inst9|converter:convert|count[2]  ; Merged with lfsr_8:inst11|converter:convert|count[2]  ;
+; lfsr_9:inst13|converter:convert|count[3]    ; Merged with lfsr_8:inst11|converter:convert|count[3]  ;
+; upCounter:inst9|converter:convert|count[3]  ; Merged with lfsr_8:inst11|converter:convert|count[3]  ;
+; lfsr_9:inst13|converter:convert|count[4]    ; Merged with lfsr_8:inst11|converter:convert|count[4]  ;
+; upCounter:inst9|converter:convert|count[4]  ; Merged with lfsr_8:inst11|converter:convert|count[4]  ;
+; lfsr_9:inst13|converter:convert|count[5]    ; Merged with lfsr_8:inst11|converter:convert|count[5]  ;
+; upCounter:inst9|converter:convert|count[5]  ; Merged with lfsr_8:inst11|converter:convert|count[5]  ;
+; lfsr_9:inst13|converter:convert|count[6]    ; Merged with lfsr_8:inst11|converter:convert|count[6]  ;
+; upCounter:inst9|converter:convert|count[6]  ; Merged with lfsr_8:inst11|converter:convert|count[6]  ;
+; lfsr_9:inst13|converter:convert|count[7]    ; Merged with lfsr_8:inst11|converter:convert|count[7]  ;
+; upCounter:inst9|converter:convert|count[7]  ; Merged with lfsr_8:inst11|converter:convert|count[7]  ;
+; lfsr_9:inst13|converter:convert|count[8]    ; Merged with lfsr_8:inst11|converter:convert|count[8]  ;
+; upCounter:inst9|converter:convert|count[8]  ; Merged with lfsr_8:inst11|converter:convert|count[8]  ;
+; lfsr_9:inst13|converter:convert|count[9]    ; Merged with lfsr_8:inst11|converter:convert|count[9]  ;
+; upCounter:inst9|converter:convert|count[9]  ; Merged with lfsr_8:inst11|converter:convert|count[9]  ;
+; lfsr_9:inst13|converter:convert|count[10]   ; Merged with lfsr_8:inst11|converter:convert|count[10] ;
+; upCounter:inst9|converter:convert|count[10] ; Merged with lfsr_8:inst11|converter:convert|count[10] ;
+; lfsr_9:inst13|converter:convert|count[11]   ; Merged with lfsr_8:inst11|converter:convert|count[11] ;
+; upCounter:inst9|converter:convert|count[11] ; Merged with lfsr_8:inst11|converter:convert|count[11] ;
+; lfsr_9:inst13|converter:convert|count[12]   ; Merged with lfsr_8:inst11|converter:convert|count[12] ;
+; upCounter:inst9|converter:convert|count[12] ; Merged with lfsr_8:inst11|converter:convert|count[12] ;
+; lfsr_9:inst13|converter:convert|count[13]   ; Merged with lfsr_8:inst11|converter:convert|count[13] ;
+; upCounter:inst9|converter:convert|count[13] ; Merged with lfsr_8:inst11|converter:convert|count[13] ;
+; lfsr_9:inst13|converter:convert|count[14]   ; Merged with lfsr_8:inst11|converter:convert|count[14] ;
+; upCounter:inst9|converter:convert|count[14] ; Merged with lfsr_8:inst11|converter:convert|count[14] ;
+; lfsr_9:inst13|converter:convert|count[15]   ; Merged with lfsr_8:inst11|converter:convert|count[15] ;
+; upCounter:inst9|converter:convert|count[15] ; Merged with lfsr_8:inst11|converter:convert|count[15] ;
+; lfsr_9:inst13|converter:convert|count[16]   ; Merged with lfsr_8:inst11|converter:convert|count[16] ;
+; upCounter:inst9|converter:convert|count[16] ; Merged with lfsr_8:inst11|converter:convert|count[16] ;
+; lfsr_9:inst13|converter:convert|count[17]   ; Merged with lfsr_8:inst11|converter:convert|count[17] ;
+; upCounter:inst9|converter:convert|count[17] ; Merged with lfsr_8:inst11|converter:convert|count[17] ;
+; lfsr_9:inst13|converter:convert|count[18]   ; Merged with lfsr_8:inst11|converter:convert|count[18] ;
+; upCounter:inst9|converter:convert|count[18] ; Merged with lfsr_8:inst11|converter:convert|count[18] ;
+; lfsr_9:inst13|converter:convert|count[19]   ; Merged with lfsr_8:inst11|converter:convert|count[19] ;
+; upCounter:inst9|converter:convert|count[19] ; Merged with lfsr_8:inst11|converter:convert|count[19] ;
+; lfsr_9:inst13|converter:convert|count[20]   ; Merged with lfsr_8:inst11|converter:convert|count[20] ;
+; upCounter:inst9|converter:convert|count[20] ; Merged with lfsr_8:inst11|converter:convert|count[20] ;
+; lfsr_9:inst13|converter:convert|count[21]   ; Merged with lfsr_8:inst11|converter:convert|count[21] ;
+; upCounter:inst9|converter:convert|count[21] ; Merged with lfsr_8:inst11|converter:convert|count[21] ;
+; lfsr_9:inst13|converter:convert|count[22]   ; Merged with lfsr_8:inst11|converter:convert|count[22] ;
+; upCounter:inst9|converter:convert|count[22] ; Merged with lfsr_8:inst11|converter:convert|count[22] ;
+; lfsr_9:inst13|converter:convert|count[23]   ; Merged with lfsr_8:inst11|converter:convert|count[23] ;
+; upCounter:inst9|converter:convert|count[23] ; Merged with lfsr_8:inst11|converter:convert|count[23] ;
+; lfsr_9:inst13|converter:convert|count[24]   ; Merged with lfsr_8:inst11|converter:convert|count[24] ;
+; upCounter:inst9|converter:convert|count[24] ; Merged with lfsr_8:inst11|converter:convert|count[24] ;
+; lfsr_9:inst13|converter:convert|count[25]   ; Merged with lfsr_8:inst11|converter:convert|count[25] ;
+; upCounter:inst9|converter:convert|count[25] ; Merged with lfsr_8:inst11|converter:convert|count[25] ;
+; lfsr_9:inst13|converter:convert|count[26]   ; Merged with lfsr_8:inst11|converter:convert|count[26] ;
+; upCounter:inst9|converter:convert|count[26] ; Merged with lfsr_8:inst11|converter:convert|count[26] ;
+; lfsr_9:inst13|converter:convert|count[27]   ; Merged with lfsr_8:inst11|converter:convert|count[27] ;
+; upCounter:inst9|converter:convert|count[27] ; Merged with lfsr_8:inst11|converter:convert|count[27] ;
+; lfsr_9:inst13|converter:convert|count[28]   ; Merged with lfsr_8:inst11|converter:convert|count[28] ;
+; upCounter:inst9|converter:convert|count[28] ; Merged with lfsr_8:inst11|converter:convert|count[28] ;
+; lfsr_9:inst13|converter:convert|count[29]   ; Merged with lfsr_8:inst11|converter:convert|count[29] ;
+; upCounter:inst9|converter:convert|count[29] ; Merged with lfsr_8:inst11|converter:convert|count[29] ;
+; lfsr_9:inst13|converter:convert|count[30]   ; Merged with lfsr_8:inst11|converter:convert|count[30] ;
+; upCounter:inst9|converter:convert|count[30] ; Merged with lfsr_8:inst11|converter:convert|count[30] ;
+; lfsr_9:inst13|converter:convert|count[31]   ; Merged with lfsr_8:inst11|converter:convert|count[31] ;
+; upCounter:inst9|converter:convert|count[31] ; Merged with lfsr_8:inst11|converter:convert|count[31] ;
+; objects:inst10|score_ones[1]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[1]   ;
+; objects:inst10|score_ones[0]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[0]   ;
+; objects:inst10|score_tens[5]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[5]   ;
+; objects:inst10|score_tens[4]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[4]   ;
+; objects:inst10|score_tens[3]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[3]   ;
+; objects:inst10|score_tens[2]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[2]   ;
+; objects:inst10|score_tens[1]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[1]   ;
+; objects:inst10|score_tens[0]                ; Merged with objects:inst10|\Move_Pipe:vscore_ten[0]   ;
+; objects:inst10|score_ones[2]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[2]   ;
+; objects:inst10|score_ones[3]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[3]   ;
+; objects:inst10|score_ones[4]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[4]   ;
+; objects:inst10|score_ones[5]                ; Merged with objects:inst10|\Move_Pipe:vscore_one[5]   ;
+; objects:inst10|coin_x_motion[2..9]          ; Merged with objects:inst10|coin_x_motion[1]           ;
+; objects:inst10|lfsr_gap_size[2,7..9]        ; Merged with objects:inst10|lfsr_gap_size[0]           ;
+; objects:inst10|lfsr_gap_size[4]             ; Merged with objects:inst10|lfsr_gap_size[1]           ;
+; objects:inst10|lfsr_gap_size[6]             ; Merged with objects:inst10|lfsr_gap_size[3]           ;
+; objects:inst10|life_one_centre[1..3,5..9]   ; Merged with objects:inst10|life_one_centre[0]         ;
+; objects:inst10|lives_size[0,1,3..9]         ; Merged with objects:inst10|life_one_centre[0]         ;
+; objects:inst10|lives_size[2]                ; Merged with objects:inst10|life_one_centre[4]         ;
+; objects:inst10|ball_y_motion[4..9]          ; Merged with objects:inst10|ball_y_motion[2]           ;
+; objects:inst10|\Start_Ball:start            ; Merged with objects:inst10|\Move_Ball:start           ;
+; objects:inst10|ball_x_pos[1,3]              ; Merged with objects:inst10|ball_x_pos[0]              ;
+; objects:inst10|size[0..2,4..9]              ; Merged with objects:inst10|ball_x_pos[0]              ;
+; objects:inst10|ball_x_pos[4,7..9]           ; Merged with objects:inst10|ball_x_pos[10]             ;
+; objects:inst10|ball_x_pos[6]                ; Merged with objects:inst10|ball_x_pos[5]              ;
+; objects:inst10|size[3]                      ; Merged with objects:inst10|ball_x_pos[5]              ;
+; objects:inst10|coin_x_motion[0]             ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|lfsr_gap_size[0]             ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|life_one_centre[0]           ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|ball_x_pos[0]                ; Stuck at GND due to stuck port data_in                ;
+; objects:inst10|ball_x_pos[5]                ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|lfsr_gap_size[1]             ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|life_one_centre[4]           ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|coin_x_pos[0]                ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|pipe_x_pos[0]                ; Stuck at VCC due to stuck port data_in                ;
+; objects:inst10|coin_x_motion[1]             ; Stuck at VCC due to stuck port data_in                ;
 ; MOUSE:inst6|cursor_row[9]                   ; Stuck at GND due to stuck port data_in                ;
 ; VGA_SYNC:inst|pixel_row[9]                  ; Stuck at GND due to stuck port data_in                ;
-; Total Number of Removed Registers = 157     ;                                                       ;
+; Total Number of Removed Registers = 198     ;                                                       ;
 +---------------------------------------------+-------------------------------------------------------+
+
+
++--------------------------------------------------------------------------------------------------------------------------+
+; Removed Registers Triggering Further Register Optimizations                                                              ;
++------------------------------+---------------------------+---------------------------------------------------------------+
+; Register name                ; Reason for Removal        ; Registers Removed due to This Register                        ;
++------------------------------+---------------------------+---------------------------------------------------------------+
+; objects:inst10|ball_x_pos[0] ; Stuck at GND              ; objects:inst10|coin_x_pos[0], objects:inst10|coin_x_motion[1] ;
+;                              ; due to stuck port data_in ;                                                               ;
++------------------------------+---------------------------+---------------------------------------------------------------+
 
 
 +------------------------------------------------------+
@@ -425,12 +475,12 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 306   ;
-; Number of registers using Synchronous Clear  ; 33    ;
-; Number of registers using Synchronous Load   ; 32    ;
+; Total registers                              ; 342   ;
+; Number of registers using Synchronous Clear  ; 38    ;
+; Number of registers using Synchronous Load   ; 44    ;
 ; Number of registers using Asynchronous Clear ; 16    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 192   ;
+; Number of registers using Clock Enable       ; 217   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -441,13 +491,13 @@ Note: All latches listed above may not be present at the end of synthesis due to
 ; Inverted Register                       ; Fan out ;
 +-----------------------------------------+---------+
 ; upCounter:inst9|LEDoff                  ; 26      ;
-; objects:inst1|alive                     ; 10      ;
-; objects:inst1|pipe_x_pos[9]             ; 5       ;
-; objects:inst1|pipe_x_pos[6]             ; 5       ;
-; objects:inst1|pipe_x_pos[5]             ; 5       ;
-; objects:inst1|pipe_x_pos[3]             ; 6       ;
-; objects:inst1|pipe_x_pos[1]             ; 3       ;
-; char_rom:inst5|start_Play               ; 8       ;
+; objects:inst10|alive                    ; 13      ;
+; objects:inst10|pipe_x_pos[9]            ; 6       ;
+; objects:inst10|pipe_x_pos[6]            ; 5       ;
+; objects:inst10|pipe_x_pos[5]            ; 5       ;
+; objects:inst10|pipe_x_pos[3]            ; 10      ;
+; objects:inst10|pipe_x_pos[1]            ; 3       ;
+; char_rom:inst5|start_Play               ; 6       ;
 ; MOUSE:inst6|send_char                   ; 3       ;
 ; MOUSE:inst6|SHIFTOUT[3]                 ; 1       ;
 ; MOUSE:inst6|SHIFTOUT[5]                 ; 1       ;
@@ -463,23 +513,27 @@ Note: All latches listed above may not be present at the end of synthesis due to
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                             ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
-; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |miniProject|MOUSE:inst6|new_cursor_column[5]          ;
+; 3:1                ; 20 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |miniProject|MOUSE:inst6|new_cursor_row[0]             ;
 ; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |miniProject|upCounter:inst9|BCD_Counter:one|Q[2]      ;
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |miniProject|upCounter:inst9|BCD_Counter:min|Q[2]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; Yes        ; |miniProject|objects:inst1|life_one_centre[4]          ;
-; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |miniProject|VGA_SYNC:inst|v_count[0]                  ;
-; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |miniProject|objects:inst1|lfsr_gap_centre[1]          ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |miniProject|objects:inst1|pipe_x_pos[4]               ;
-; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |miniProject|lfsr_9:inst13|converter:convert|count[16] ;
+; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |miniProject|upCounter:inst9|BCD_Counter:min|Q[0]      ;
+; 3:1                ; 10 bits   ; 20 LEs        ; 10 LEs               ; 10 LEs                 ; Yes        ; |miniProject|VGA_SYNC:inst|v_count[9]                  ;
+; 3:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |miniProject|objects:inst10|lfsr_gap_size[1]           ;
+; 3:1                ; 13 bits   ; 26 LEs        ; 0 LEs                ; 26 LEs                 ; Yes        ; |miniProject|objects:inst10|lfsr_gap_centre[3]         ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |miniProject|objects:inst10|pipe_x_pos[2]              ;
+; 3:1                ; 32 bits   ; 64 LEs        ; 32 LEs               ; 32 LEs                 ; Yes        ; |miniProject|lfsr_8:inst11|converter:convert|count[25] ;
 ; 4:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |miniProject|upCounter:inst9|BCD_Counter:ten|Q[0]      ;
-; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |miniProject|objects:inst1|ball_x_pos[2]               ;
-; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |miniProject|objects:inst1|lfsr_gap[8]                 ;
+; 4:1                ; 3 bits    ; 6 LEs         ; 3 LEs                ; 3 LEs                  ; Yes        ; |miniProject|objects:inst10|ball_x_pos[10]             ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 0 LEs                ; 12 LEs                 ; Yes        ; |miniProject|objects:inst10|\Move_Pipe:vscore_ten[0]   ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |miniProject|objects:inst10|\Move_Pipe:vscore_one[0]   ;
+; 3:1                ; 6 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |miniProject|objects:inst10|lfsr_gap[8]                ;
 ; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |miniProject|MOUSE:inst6|cursor_column[7]              ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |miniProject|MOUSE:inst6|cursor_row[3]                 ;
-; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |miniProject|objects:inst1|ball_y_pos[8]               ;
-; 43:1               ; 9 bits    ; 252 LEs       ; 0 LEs                ; 252 LEs                ; Yes        ; |miniProject|char_rom:inst5|rom_address[3]             ;
-; 61:1               ; 5 bits    ; 200 LEs       ; 175 LEs              ; 25 LEs                 ; Yes        ; |miniProject|char_rom:inst5|character_address[3]       ;
-; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |miniProject|objects:inst1|pipe_x_pos[6]               ;
+; 5:1                ; 10 bits   ; 30 LEs        ; 20 LEs               ; 10 LEs                 ; Yes        ; |miniProject|MOUSE:inst6|cursor_row[7]                 ;
+; 6:1                ; 3 bits    ; 12 LEs        ; 6 LEs                ; 6 LEs                  ; Yes        ; |miniProject|objects:inst10|lives[1]                   ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 20 LEs               ; 20 LEs                 ; Yes        ; |miniProject|objects:inst10|ball_y_pos[5]              ;
+; 6:1                ; 10 bits   ; 40 LEs        ; 10 LEs               ; 30 LEs                 ; Yes        ; |miniProject|objects:inst10|coin_x_pos[9]              ;
+; 43:1               ; 9 bits    ; 252 LEs       ; 0 LEs                ; 252 LEs                ; Yes        ; |miniProject|char_rom:inst5|rom_address[4]             ;
+; 61:1               ; 5 bits    ; 200 LEs       ; 175 LEs              ; 25 LEs                 ; Yes        ; |miniProject|char_rom:inst5|character_address[1]       ;
+; 3:1                ; 5 bits    ; 10 LEs        ; 5 LEs                ; 5 LEs                  ; Yes        ; |miniProject|objects:inst10|pipe_x_pos[1]              ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 2 LEs                ; 2 LEs                  ; No         ; |miniProject|char_rom:inst5|Add0                       ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------+
 
@@ -988,7 +1042,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:01     ;
+; Top            ; 00:00:02     ;
 +----------------+--------------+
 
 
@@ -998,7 +1052,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Sat May 21 17:28:38 2022
+    Info: Processing started: Thu May 26 20:26:16 2022
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off miniProject -c miniProject
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 2 design units, including 1 entities, in source file objects.vhd
@@ -1043,9 +1097,12 @@ Info (12021): Found 2 design units, including 1 entities, in source file colour_
 Info (12021): Found 2 design units, including 1 entities, in source file lfsr_9.vhd
     Info (12022): Found design unit 1: lfsr_9-arc
     Info (12023): Found entity 1: lfsr_9
+Info (12021): Found 2 design units, including 1 entities, in source file lfsr_8.vhd
+    Info (12022): Found design unit 1: lfsr_8-arc
+    Info (12023): Found entity 1: lfsr_8
 Info (12127): Elaborating entity "miniProject" for the top level hierarchy
 Warning (275011): Block or symbol "lfsr_9" of instance "inst13" overlaps another block or symbol
-Warning (275011): Block or symbol "objects" of instance "inst1" overlaps another block or symbol
+Warning (275011): Block or symbol "objects" of instance "inst10" overlaps another block or symbol
 Info (12128): Elaborating entity "VGA_SYNC" for hierarchy "VGA_SYNC:inst"
 Info (12128): Elaborating entity "altpll0" for hierarchy "altpll0:inst2"
 Info (12128): Elaborating entity "altpll" for hierarchy "altpll0:inst2|altpll:altpll_component"
@@ -1131,39 +1188,94 @@ Info (12133): Instantiated megafunction "char_rom:inst5|altsyncram:altsyncram_co
 Info (12021): Found 1 design units, including 1 entities, in source file db/altsyncram_kt91.tdf
     Info (12023): Found entity 1: altsyncram_kt91
 Info (12128): Elaborating entity "altsyncram_kt91" for hierarchy "char_rom:inst5|altsyncram:altsyncram_component|altsyncram_kt91:auto_generated"
-Info (12128): Elaborating entity "objects" for hierarchy "objects:inst1"
-Warning (10492): VHDL Process Statement warning at objects.vhd(103): signal "start_c" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(103): signal "alive" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(104): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(106): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "objects" for hierarchy "objects:inst10"
+Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "start_c" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "alive" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "isCoin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(105): signal "gotCoin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(106): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(107): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(107): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(108): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(107): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(108): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(108): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(109): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(109): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(109): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(109): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(110): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(109): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(110): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(111): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(111): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(111): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(111): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(111): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(112): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(112): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(113): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(114): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(113): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(113): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(113): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(114): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at objects.vhd(115): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "alive" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
-Warning (10492): VHDL Process Statement warning at objects.vhd(123): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(115): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(115): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(115): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(115): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(116): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(116): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(117): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(119): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(119): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(120): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(120): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(121): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(121): signal "coin_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(123): signal "start_c" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(123): signal "alive" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(123): signal "isCoin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(123): signal "gotCoin" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(124): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(125): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(125): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(126): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(127): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(127): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(128): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(129): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(129): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(129): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(130): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(131): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(131): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(131): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(132): signal "lives" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(133): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(133): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(133): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(133): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(134): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(135): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(135): signal "life_one_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(135): signal "life_two_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(135): signal "life_three_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(137): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(138): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(139): signal "ball_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(141): signal "alive" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Warning (10492): VHDL Process Statement warning at objects.vhd(147): signal "pipe_on" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Info (12128): Elaborating entity "MOUSE" for hierarchy "MOUSE:inst6"
 Warning (10036): Verilog HDL or VHDL warning at mouse.vhd(25): object "CHARIN" assigned a value but never read
 Warning (10492): VHDL Process Statement warning at mouse.vhd(151): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(155): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(156): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
 Warning (10492): VHDL Process Statement warning at mouse.vhd(157): signal "CHAROUT" is read inside the Process Statement but isn't in the Process Statement's sensitivity list
+Info (12128): Elaborating entity "lfsr_8" for hierarchy "lfsr_8:inst11"
+Warning (10540): VHDL Signal Declaration warning at lfsr_8.vhd(16): used explicit default value for signal "seed" because signal was never assigned a value
+Info (12128): Elaborating entity "converter" for hierarchy "lfsr_8:inst11|converter:convert"
 Info (12128): Elaborating entity "lfsr_9" for hierarchy "lfsr_9:inst13"
 Warning (10540): VHDL Signal Declaration warning at lfsr_9.vhd(16): used explicit default value for signal "seed" because signal was never assigned a value
-Info (12128): Elaborating entity "converter" for hierarchy "lfsr_9:inst13|converter:convert"
 Info (12128): Elaborating entity "upCounter" for hierarchy "upCounter:inst9"
 Warning (10541): VHDL Signal Declaration warning at Lab3.vhd(13): used implicit default value for signal "v1Init" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at Lab3.vhd(13): used implicit default value for signal "v3Init" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
@@ -1185,17 +1297,17 @@ Warning (13024): Output pins are stuck at VCC or GND
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 1 node(s), including 0 DDIO, 1 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 858 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 1129 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
     Info (21059): Implemented 49 output pins
     Info (21060): Implemented 2 bidirectional pins
-    Info (21061): Implemented 794 logic cells
+    Info (21061): Implemented 1065 logic cells
     Info (21064): Implemented 8 RAM segments
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 42 warnings
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 96 warnings
     Info: Peak virtual memory: 4651 megabytes
-    Info: Processing ended: Sat May 21 17:28:42 2022
-    Info: Elapsed time: 00:00:04
-    Info: Total CPU time (on all processors): 00:00:03
+    Info: Processing ended: Thu May 26 20:26:21 2022
+    Info: Elapsed time: 00:00:05
+    Info: Total CPU time (on all processors): 00:00:04
 
 
