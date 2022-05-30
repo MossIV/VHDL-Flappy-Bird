@@ -12,7 +12,7 @@ ENTITY char_rom IS
 		char_address_col	:	IN STD_LOGIC_VECTOR (5 DOWNTO 0);
 		char_address_row : IN STD_LOGIC_VECTOR(5 DOWNTO 0);
 		font_row, font_col	:	IN STD_LOGIC_VECTOR (2 DOWNTO 0);
-		pb0, alive_status : IN STD_LOGIC;
+		pb0, pb1, alive_status : IN STD_LOGIC;
 		training, game : IN STD_LOGIC;
 		clock				: 	IN STD_LOGIC ;
 		score_one, score_ten 	: IN STD_LOGIC_VECTOR(5 DOWNTO 0);
@@ -87,7 +87,7 @@ process(clock)
 	variable start_Play : STD_LOGIC := '1';
 begin
 if(falling_edge(clock))then
-if(title_enable = '0' and start_Play = '1')then 
+if(title_enable = '0' and start_Play = '1' and alive_status = '1')then 
 	if (char_address_row = "001001" and char_address_col = "010001") then --F
 		character_address <= "000110";
 		rom_address <= character_address & font_row;
@@ -418,6 +418,10 @@ elsif(alive_status = '0') then
 					rom_mux_output <= rom_data (CONV_INTEGER(NOT font_col(2 DOWNTO 0)));
 			else
 				rom_mux_output <= '0';
+			end if;
+			
+			if(pb1 = '0') then
+				start_Play := '1';
 			end if;
 else
 	rom_mux_output <= '0';

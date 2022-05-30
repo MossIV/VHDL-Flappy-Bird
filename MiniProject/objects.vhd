@@ -6,8 +6,8 @@ USE  IEEE.STD_LOGIC_SIGNED.all;
 
 ENTITY objects IS
 	PORT
-		(clk, vert_sync, hori_sync, pb0, training, game, lClick, rClick	: IN std_logic;
-          pixel_row, pixel_column	: IN std_logic_vector(9 DOWNTO 0);
+		(clk, vert_sync, hori_sync, pb0, pb1, training, game, lClick, rClick	: IN std_logic;
+          pixel_row, pixel_column, mouse_column	: IN std_logic_vector(9 DOWNTO 0);
 			 lfsr_value						: IN std_logic_vector(8 downto 0);
 			 lfsr_coin						: IN std_logic_vector(7 downto 0);
 			 alive_status 					: OUT std_logic;
@@ -26,6 +26,11 @@ SIGNAL size 					: std_logic_vector(9 DOWNTO 0);
 SIGNAL ball_y_pos				: std_logic_vector(9 DOWNTO 0);
 SiGNAL ball_x_pos				: std_logic_vector(10 DOWNTO 0);
 SIGNAL ball_y_motion			: std_logic_vector(9 DOWNTO 0);
+SIGNAL eye_on 					: std_logic;
+SIGNAL beak_on 				: std_logic;
+SIGNAL wing_on 				: std_logic;
+SIGNAL wing2_on 				: std_logic;
+
 SIGNAL alive 					: std_logic := '1';
 SIGNAL lives					: std_logic_vector(2 DOWNTO 0);
 SIGNAL lives_size				: std_logic_vector(9 DOWNTO 0);
@@ -57,12 +62,22 @@ BEGIN
 
 Start_Ball: process(vert_sync)
 variable start : std_logic := '0';
+variable vMouseCol : std_logic_vector(9 downto 0);
 begin
 if(rising_edge(vert_sync)) then
-	if(pb0 = '1' AND start = '1') then
+	if(alive = '0' AND pb1 ='0') then
+		start := '0';
+		start_c <= '0';
+	elsif(pb0 = '1' AND start = '1') then
+		vMouseCol := mouse_column;
 		size <= CONV_STD_LOGIC_VECTOR(8,10);
 		-- ball_x_pos and ball_y_pos show the (x,y) for the centre of ball
-		ball_x_pos <= CONV_STD_LOGIC_VECTOR(100,11);
+		if(vMouseCol < CONV_STD_LOGIC_VECTOR(50,10)) then
+			vMouseCol := CONV_STD_LOGIC_VECTOR(50,10);
+		elsif(vMouseCol > CONV_STD_LOGIC_VECTOR(150,10)) then
+			vMouseCol := CONV_STD_LOGIC_VECTOR(150,10); 
+		end if;
+		ball_x_pos <= '0' & vMouseCol;
 	elsif(pb0 = '0' AND training = '1' AND game = '0') then
 		start := '1';
 		start_c <= '1';
@@ -70,10 +85,16 @@ if(rising_edge(vert_sync)) then
 		start := '1';
 		start_c <= '1';
 	else
+		vMouseCol := mouse_column;
 		size <= CONV_STD_LOGIC_VECTOR(8,10);
 		start_c <= '0';
 		-- ball_x_pos and ball_y_pos show the (x,y) for the centre of ball
-		ball_x_pos <= CONV_STD_LOGIC_VECTOR(-16,11);
+		if(vMouseCol < CONV_STD_LOGIC_VECTOR(50,10)) then
+			vMouseCol := CONV_STD_LOGIC_VECTOR(50,10);
+		elsif(vMouseCol > CONV_STD_LOGIC_VECTOR(150,10)) then
+			vMouseCol := CONV_STD_LOGIC_VECTOR(150,10); 
+		end if;
+		ball_x_pos <= '0' & vMouseCol;
 	end if;
 end if;
 end process Start_Ball;
@@ -93,6 +114,22 @@ life_two_on <= '1' when ( ('0' & pixel_column >= life_two_centre - lives_size) a
 life_three_on <= '1' when ( ('0' & pixel_column >= life_three_centre - lives_size) and ('0' & pixel_column <= life_three_centre + size)
 						 and ('0' & pixel_row >= CONV_STD_LOGIC_VECTOR(12,10)) and ('0' & pixel_row <= CONV_STD_LOGIC_VECTOR(24,10))) else	-- y_pos - size <= pixel_row <= y_pos + size
 			'0';
+			
+eye_on <= '1' when ( ('0' & ball_x_pos + CONV_STD_LOGIC_VECTOR(4,10) <= '0' & pixel_column + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_column <= '0' & ball_x_pos + CONV_STD_LOGIC_VECTOR(4,10) + CONV_STD_LOGIC_VECTOR(2,10)) 	-- x_pos - size <= pixel_column <= x_pos + size
+					and ('0' & ball_y_pos - CONV_STD_LOGIC_VECTOR(3,10) <= pixel_row + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_row <= ball_y_pos - CONV_STD_LOGIC_VECTOR(3,10) + CONV_STD_LOGIC_VECTOR(2,10)) )  else	-- y_pos - size <= pixel_row <= y_pos + size
+			'0';
+			
+beak_on <= '1' when ( ('0' & ball_x_pos + CONV_STD_LOGIC_VECTOR(10,10) <= '0' & pixel_column + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_column <= '0' & ball_x_pos + CONV_STD_LOGIC_VECTOR(10,10) + CONV_STD_LOGIC_VECTOR(2,10)) 	-- x_pos - size <= pixel_column <= x_pos + size
+					and ('0' & ball_y_pos <= pixel_row + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_row <= ball_y_pos + CONV_STD_LOGIC_VECTOR(2,10)) )  else	-- y_pos - size <= pixel_row <= y_pos + size
+			'0';
+			
+wing_on <= '1' when ( ('0' & ball_x_pos - CONV_STD_LOGIC_VECTOR(8,10) <= '0' & pixel_column + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_column <= '0' & ball_x_pos - CONV_STD_LOGIC_VECTOR(3,10) + CONV_STD_LOGIC_VECTOR(2,10)) 	-- x_pos - size <= pixel_column <= x_pos + size
+					and ('0' & ball_y_pos + CONV_STD_LOGIC_VECTOR(2,10) <= pixel_row + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_row <= ball_y_pos + CONV_STD_LOGIC_VECTOR(6,10)) )  else	-- y_pos - size <= pixel_row <= y_pos + size
+			'0';
+
+wing2_on <= '1' when ( ('0' & ball_x_pos - CONV_STD_LOGIC_VECTOR(8,10) <= '0' & pixel_column + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_column <= '0' & ball_x_pos - CONV_STD_LOGIC_VECTOR(3,10) + CONV_STD_LOGIC_VECTOR(2,10)) 	-- x_pos - size <= pixel_column <= x_pos + size
+					and ('0' & ball_y_pos + CONV_STD_LOGIC_VECTOR(5,10) <= pixel_row + CONV_STD_LOGIC_VECTOR(2,10)) and ('0' & pixel_row <= ball_y_pos + CONV_STD_LOGIC_VECTOR(9,10)) )  else	-- y_pos - size <= pixel_row <= y_pos + size
+			'0';
 
 -- Colours for pixel data on video signal
 -- Changing the background and ball colour by pushbuttons
@@ -101,43 +138,49 @@ Colour_Display: process (vert_sync)
 variable v_blue	:std_logic;
 variable v_green	:std_logic;
 variable v_red	:std_logic;
+variable v_wing	:std_logic;
 
 begin
+	if(lClick = '1') then
+		v_wing := wing2_on;
+	else
+		v_wing := wing_on;
+	end if;
 	if(start_c ='1' AND alive ='1' AND isCoin = '1' AND gotCoin = '0') then 
 		if(lives = "001") then
-			v_blue := ball_on or life_one_on;
-			v_green := pipe_on or coin_on;
-			v_red := ball_on or life_one_on or coin_on;
+			v_blue := (ball_on and not v_wing) or life_one_on;
+			v_green := pipe_on or coin_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or coin_on or beak_on or v_wing;
 		elsif(lives="010") then
-			v_blue := ball_on or life_one_on or life_two_on;
-			v_green := pipe_on or coin_on;
-			v_red := ball_on or life_one_on or life_two_on  or coin_on ;
+			v_blue := (ball_on and not v_wing) or life_one_on or life_two_on;
+			v_green := pipe_on or coin_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or life_two_on  or coin_on or beak_on or v_wing;
 		elsif(lives = "011") then
-			v_blue := ball_on or life_one_on or life_two_on or life_three_on;
-			v_green := pipe_on or coin_on;
-			v_red := ball_on or life_one_on or life_two_on or life_three_on or coin_on;
+			v_blue := (ball_on and not v_wing) or life_one_on or life_two_on or life_three_on;
+			v_green := pipe_on or coin_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or life_two_on or life_three_on or coin_on or beak_on or v_wing;
 		else
-			v_blue := ball_on;
-			v_green := pipe_on or coin_on;
-			v_red := ball_on or coin_on;
+			v_blue := (ball_on and not v_wing);
+			v_green := pipe_on or coin_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or coin_on or beak_on or v_wing;
 		end if;
 	elsif((start_c ='1' AND alive ='1' AND isCoin = '0') or (start_c ='1' AND alive ='1' AND isCoin = '1' AND gotCoin = '1')) then
 		if(lives = "001") then
-			v_blue := ball_on or life_one_on;
-			v_green := pipe_on;
-			v_red := ball_on or life_one_on;
+			v_blue := (ball_on and not v_wing) or life_one_on;
+			v_green := pipe_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or beak_on or v_wing;
 		elsif(lives="010") then
-			v_blue := ball_on or life_one_on or life_two_on;
-			v_green := pipe_on;
-			v_red := ball_on or life_one_on or life_two_on;
+			v_blue := (ball_on and not v_wing) or life_one_on or life_two_on;
+			v_green := pipe_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or life_two_on or beak_on or v_wing;
 		elsif(lives = "011") then
-			v_blue := ball_on or life_one_on or life_two_on or life_three_on;
-			v_green := pipe_on;
-			v_red := ball_on or life_one_on or life_two_on or life_three_on;
+			v_blue := (ball_on and not v_wing) or life_one_on or life_two_on or life_three_on;
+			v_green := pipe_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or life_one_on or life_two_on or life_three_on or beak_on or v_wing;
 		else
-			v_blue := ball_on;
-			v_green := pipe_on;
-			v_red := ball_on;
+			v_blue := (ball_on and not v_wing);
+			v_green := pipe_on or eye_on or beak_on or v_wing;
+			v_red := (ball_on and not v_wing) or beak_on or v_wing;
 		end if;
 	elsif(alive = '0') then
 		v_blue := '0';
@@ -169,7 +212,11 @@ variable start : std_logic := '0';
 begin
 	-- Move ball once every vertical sync
 	if (rising_edge(vert_sync)) then
-		if(pb0 = '1' AND start = '1') then
+	
+		if(alive = '0' and pb1 = '0') then
+			start := '0';
+			alive <= '1';
+		elsif(pb0 = '1' AND start = '1') then
 		-- Bounce off top or bottom of the screen
 			if (ball_y_pos <= size ) then
 				ball_y_pos <= CONV_STD_LOGIC_VECTOR(16,10);
@@ -194,7 +241,6 @@ begin
 					end if;
 				end if;
 			end if;
-		-- Compute next ball Y position
 		elsif(pb0 = '0' AND training = '1' AND game = '0') then
 			start := '1';
 			lives <= '0' & "01";
@@ -208,7 +254,7 @@ begin
 			life_two_centre <= CONV_STD_LOGIC_VECTOR(32,10);
 			life_three_centre <= CONV_STD_LOGIC_VECTOR(48,10);
 		else
-			ball_y_pos <= CONV_STD_LOGIC_VECTOR(0,10);
+			ball_y_pos <= CONV_STD_LOGIC_VECTOR(-8,10);
 		end if;
 	end if;
 end process Move_Ball;
@@ -220,26 +266,41 @@ variable vscore_one : std_logic_vector(5 downto 0):= CONV_STD_LOGIC_VECTOR(0,6);
 variable vscore_ten : std_logic_vector(5 downto 0):= CONV_STD_LOGIC_VECTOR(0,6);
 variable start : std_logic := '0';
 variable v_lfsr_state : std_logic := '0';
+variable startCoin: std_logic := '0';
 begin
 	-- Move pipe once every horizontal sync
 	if (rising_edge(vert_sync)) then
 		if(pb0 = '0' and start = '0') then
-			start := '1';
+			vscore_one := CONV_STD_LOGIC_VECTOR(0,6);
+			vscore_ten := CONV_STD_LOGIC_VECTOR(0,6);
+			score_ones <= vscore_one;
+			score_tens <= vscore_ten;
+			startCoin := '1';
 			level <= "01";
 			pipe_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
+			coin_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
 			if ('0' & lfsr_value <= "0100101100") then 
 				v_lfsr_state := '0';
 			else
 				v_lfsr_state := '1';
 			end if;
+			
 			case(v_lfsr_state) is
-			when '0' => lfsr_gap <= ('0' & lfsr_value); 
-			when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
-			when others =>lfsr_gap <= "0000000000";
+				when '0' => lfsr_gap <= ('0' & lfsr_value); 
+				when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
+				when others =>lfsr_gap <= "0000000000";
 			end case;
+			
 			lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(100,10);
 			lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(75,10);
+			start := '1';
+		
 		else
+			if(alive = '0' and pb1 = '0') then
+				start := '0';
+				startCoin := '0';
+			end if;
+		
 			if(level = "11") then
 				pipe_x_motion <= -CONV_STD_LOGIC_VECTOR(3,10);
 				coin_x_motion <= -CONV_STD_LOGIC_VECTOR(3,10);
@@ -259,17 +320,22 @@ begin
 				else
 					v_lfsr_state := '1';
 				end if;
-			case(v_lfsr_state) is
-				when '0' => lfsr_gap <= ('0' & lfsr_value); 
-				when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
-				when others =>lfsr_gap <= "0000000000";
+				
+				case(v_lfsr_state) is
+					when '0' => lfsr_gap <= ('0' & lfsr_value); 
+					when '1' => lfsr_gap <= ('0' & lfsr_value - "0100101100");
+					when others =>lfsr_gap <= "0000000000";
 				end case;
+				
 				lfsr_gap_centre <= lfsr_gap + CONV_STD_LOGIC_VECTOR(100,10);
-					if(level = "01") then
-						lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(75,10);
-					else
-						lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(50,10);
-					end if;
+				
+				if(level = "01") then
+					lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(75,10);
+				else
+					lfsr_gap_size <= CONV_STD_LOGIC_VECTOR(50,10);
+				end if;
+				
+				if(startCoin = '1') then
 				if('0' & lfsr_coin >= "010101010") then 
 					isCoin <= '1';
 					coin_x_pos <= CONV_STD_LOGIC_VECTOR(619,11);
@@ -277,7 +343,10 @@ begin
 				else
 					isCoin <= '0';
 				end if;
-			elsif((('0' & ball_x_pos + size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos + size <= '0' & pipe_x_pos + pipe_size) or ('0' & ball_x_pos - size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos - size <= '0' & pipe_x_pos + pipe_size))AND isHit = '0') then
+				end if;
+				
+			elsif((('0' & ball_x_pos + size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos + size <= '0' & pipe_x_pos + pipe_size) or 
+			('0' & ball_x_pos - size >= '0' & pipe_x_pos - pipe_size and '0' & ball_x_pos - size <= '0' & pipe_x_pos + pipe_size))AND isHit = '0') then
 				coin_x_pos <= coin_x_pos + coin_x_motion;
 				if(('0' & ball_y_pos - size < '0' & lfsr_gap_centre - lfsr_gap_size) or ('0' & ball_y_pos + size > '0' & lfsr_gap_centre + lfsr_gap_size)) then
 					isHit <= '1';
@@ -285,6 +354,7 @@ begin
 					gotCoin <= '1';
 				end if;
 				pipe_x_pos <= pipe_x_pos + pipe_x_motion;
+				
 			elsif(addedCoin = '0' and gotCoin = '1' AND alive = '1') then
 				addedCoin := '1';
 				if(vscore_one = CONV_STD_LOGIC_VECTOR(9,6)) then
