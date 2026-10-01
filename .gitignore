@@ -1,0 +1,13 @@
+# Quartus build databases and caches
+MiniProject/db/
+MiniProject/incremental_db/
+MiniProject/greybox_tmp/
+MiniProject/.qsys_edit/
+
+# Compilation output. The .sof, .pin and .cdf already checked in predate this
+# file and stay tracked (this only stops new build output being added).
+MiniProject/output_files/
+
+# Tool and editor backups
+*.bak
+*.qws
