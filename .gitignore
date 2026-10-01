@@ -4,9 +4,12 @@ MiniProject/incremental_db/
 MiniProject/greybox_tmp/
 MiniProject/.qsys_edit/
 
-# Compilation output. The .sof, .pin and .cdf already checked in predate this
-# file and stay tracked (this only stops new build output being added).
-MiniProject/output_files/
+# Compilation output, except the programmed bitstream, the pin report and the
+# Programmer chain description, which are kept for reference.
+MiniProject/output_files/*
+!MiniProject/output_files/miniProject.sof
+!MiniProject/output_files/miniProject.pin
+!MiniProject/output_files/miniProject.cdf
 
 # Tool and editor backups
 *.bak
